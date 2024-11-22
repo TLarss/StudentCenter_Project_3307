@@ -6,10 +6,15 @@ using namespace std;
 
 #pragma once
 
+// TO DO: add size attribute to course & use it in methods instead of .length
+
 class Course
 {
 public:
-    // constructor, only initializes faculty and course ID
+    // constructor 1 (default)
+    Course();
+
+    // constructor 2, only initializes faculty and course ID
     Course(string f, int i);
 
     void setPrereqCount(int c);
@@ -48,10 +53,10 @@ public:
     void setNumCredits(float n);
 
     // getter for prereqs
-    Course[] getPrereqs();
+    Course* getPrereqs();
 
     // setter for prereqs
-    void addPrereq(Course p);
+    int addPrereq(Course p);
 
 
     // to remove a prereq, returns 0 for success, and returns 1 for class not found
@@ -69,8 +74,10 @@ private:
     string title;
     char type;
     float numCredits;
-    Course* prereqs = nullptr;
+    Course* prereqs;
     int prereqCount;
+    int size;
+    // add a "course name" that has facult & name
     // add prereq count attribute !!!!!!!!!!!!!!!!!!!!!!!!!
 };
 

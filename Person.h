@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Transcript.h"
 using namespace std;
 
 #ifndef PERSON_H
@@ -34,7 +35,7 @@ private:
     int ID;
     string name;
     string email;
-
+    // add a transcript!!!
 };
 
 #endif

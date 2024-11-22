@@ -20,13 +20,13 @@ public:
     void setName(string n);
 
     // getter for class list
-    Course[] getClassList(); // what to do here ?????????????????????????????????????????????????????
+    const Course* getClassList(); // what to do here ?????????????????????????????????????????????????????
 
     // method to add a class to the class list
     void addClass(Course c); // maybe add throws error (or mb have return as int, and the int can be a flag for an error)!!!!!!!
 
     // method to remove a class from the class list
-    void removeClass(Course c); // why doesnt course throw an error
+    int removeClass(Course c); // why doesnt course throw an error
 
     // getter for num credits
     float getNumcredits(); // maybe implement num credits as a variable that is set by itself by adding up the credits 
@@ -49,11 +49,12 @@ public:
 
 private:
     string name;
-    Course classList[0]; // this means its empty right???
+    //const Course* classList = nullptr; // this means its empty right??? does this need to be CONST??????????????????????
+    Course* classList;
     int classListLen;
     float numCredits;
-    // type is major, minor, specialization, etc...
-    string type;
+    string type; // type is major, minor, specialization, etc...
+    int size;
     // entrance & grad requirements !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 };
 

@@ -1,6 +1,8 @@
 #include "CourseNavigator.h"
 
-// use singleton pattern to ensure only one instance is created.
+// TO BE IMPLEMENTED LATER
+
+// maybe use singleton pattern to ensure only one instance is created.
 CourseNavigator::CourseNavigator()
 {
 

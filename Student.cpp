@@ -5,7 +5,12 @@
 #include <iostream>
 using namespace std;
 
-// constructor 1, initializes ID, name and grad year
+
+// constructor 1, default constructor, takes no inputs & uses default values
+Student::Student() : ID(000000000), name("student name") {}
+
+
+// constructor 2, initializes ID, name and grad year
 Student::Student(int i, string n, int g)
 {
     ID = i;
@@ -13,7 +18,7 @@ Student::Student(int i, string n, int g)
     gradYear = g;
 }
 
-// constructor 2, initializes ID, name, grade year, and also email
+// constructor 3, initializes ID, name, grade year, and also email
 Student::Student(int i, string n, int g, string e)
 {
     ID = i;

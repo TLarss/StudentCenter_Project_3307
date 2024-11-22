@@ -1,9 +1,14 @@
 #include "Course.h"
-#include <iostream>
 #include "Transcript.h"
+#include <cstring>
+#include <iostream>
 using namespace std;
 
-Course::Course(string f = "default faculty", int i = 0000)
+// constructor 1 (default): takes no input, gives default values to Faculty, courseID, size, and initializes prereqs
+Course::Course() : faculty("default"), courseID(0), prereqs(nullptr), size(0) {}
+
+// constructor 2: 
+Course::Course(string f, int i) : prereqs(nullptr)
 {
     faculty = f;
     courseID = i;
@@ -65,50 +70,80 @@ void Course::setNumCredits(float n)
     numCredits = n;
 }
 
-Course[] Course::getPrereqs()
+Course* Course::getPrereqs()
 {
     return prereqs;
 }
 
-void Course::addPrereq(Course p)
-{ // GO BACK AND MAKE IT CHECK IF THE COURSE IS ALREADY IN THE LIST !!!!!!!!!!!!!
-    prereqs.append(p);
+// adds course to prereqs list, returns 0 for success & 1 for error
+int Course::addPrereq(Course p)
+{ 
+    // check if the course is already in the list
+    int flag = 0;
+    for (int i = 0; i < size; i++) {
+        if (prereqs[i].getCourseID() == p.getCourseID() && prereqs[i].getFaculty() == p.getFaculty()) {
+            flag = 1;
+        }
+    }
+    // return 1 if it is already in the list
+    if (flag == 1) return 1;
+
+    // create new size and prereqs attributes
+    int newSize = size + 1;
+    Course* newPrereqs = new Course[newSize];
+
+    // copy old prereq list to a new one
+    if (prereqs) {
+        memcpy(newPrereqs, prereqs, size * sizeof(Course));
+    }
+
+    // add new prereq course to the new list
+    newPrereqs[size] = p;
+
+    // clear memory of the old list, then update the prereqs and size attributes
+    delete[] prereqs;
+    prereqs = newPrereqs;
+    size = newSize;
+
+    return 0;
 }
 
 int Course::removePrereq(Course p)
 {
-    if (prereqs == NULL) return 1;
+    // look through array to find index of the course
+    int index = -1;
+    for (int i = 0; i < size; i++) {
+        if (prereqs[i].getFaculty() == p.getFaculty() && prereqs[i].getCourseID() == p.getCourseID()) {
+            index = i;
+        }
+    }
 
-    else 
-    {
-        int flag = 0;
-        Course prereqs_copy[prereqs.length() - 1];
+    // return 1 if the course isnt in the array
+    if (index == -1) return 1;
 
-        for (int i = 0; i++ ; i < prereqs.length())
-        {
-            if (prereqs[i] == p) // is there gonna be an issue with comparing course objects?
-            {
-                flag = 1;
-                i = i + 1;
-                prereqs_copy[i-1] = prereqs[i];        
-            }
-            
-            else
-            {
-                prereqs_copy[i] = prereqs[i]
-            } 
+    // create new size & prereqs
+    int newSize = size - 1;
+    Course* newPrereqs = new Course[newSize];
+
+    // copy all courses except the course to remove
+    for (int i = 0; i < newSize; i++) {
+        if (i < index) {
+            newPrereqs[i] = prereqs[i];
         }
 
-
-
-        if (flag == 0) return 1;
-
-        prereqs = prereqs_copy;
-        return 0;
+        else {
+            newPrereqs[i] = prereqs[i + 1];
+        }
     }
+
+    // clear old & save new data
+    delete[] prereqs;
+    prereqs = newPrereqs;
+
+    size = newSize;
+
+    return 0;    
 }
-
-
 
 
 Course::~Course()

@@ -3,6 +3,8 @@
 
 #pragma once
 
+// TO BE IMPLEMENTED LATER
+
 class CourseNavigator
 {
 public:

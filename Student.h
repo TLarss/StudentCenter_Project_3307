@@ -1,6 +1,9 @@
+#include <iostream>
 #include "Person.h"
 #include "Course.h"
-#include <iostream>
+#include "Module.h"
+#include "Transcript.h"
+
 using namespace std;
 
 #ifndef STUDENT_H
@@ -11,10 +14,13 @@ using namespace std;
 class Student : public Person
 {
 public:
-    // constructor 
-    Student(int i, string n, int g);
+    // constructor 1 (default)
+    Student();
     
     // constructor 2
+    Student(int i, string n, int g);
+    
+    // constructor 3
     Student(int i, string n, int g, string e);
 
     // getter for grad year
