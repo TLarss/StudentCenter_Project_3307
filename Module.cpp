@@ -4,7 +4,9 @@
 #include <iostream>
 using namespace std;
 
-Module::Module(string n = "Default") : size(0), classList(nullptr)
+Module::Module() : name("defaul name"), size(0), classList(nullptr) {}
+
+Module::Module(string n) : size(0), classList(nullptr)
 {
     name = n;
 }
@@ -27,12 +29,19 @@ const Course* Module::getClassList()
     return classList;
 }
 
-// add class to course list
-void Module::addClass(Course c) // NEED TO ADD -> make it check if the course is aready in the module
+// add class to course list, return 0 for success or 1 for error
+int Module::addClass(Course c)
 {
+    // check and return 1 if the course is already in the list
+    for (int i = 0; i < size; i++) {
+        if (classList[i].getCourseID() == c.getCourseID() && classList[i].getFaculty() == c.getFaculty()) {
+            return 1;
+        }
+    }
+
     // create new classList & size variables 1 larger than the exsisting
     int newSize = size + 1;
-    Course* classList2 = new Course[newSize]; // why am i getting this error ????????????????????
+    Course* classList2 = new Course[newSize]; 
 
     // copy old courses to new array
     if (classList) { 
@@ -47,6 +56,8 @@ void Module::addClass(Course c) // NEED TO ADD -> make it check if the course is
 
     // replace old size attribute
     size = newSize;
+
+    return 0;
 }
 
 // remove class from course list, return 0 for success or 1 for error
@@ -55,7 +66,9 @@ int Module::removeClass(Course c)
     // look through completed array to find the index of the course to remove 
     int index = -1;
     for (int i = 0; i < size; i++) {
-        if (classList[i].getFaculty() == c.getFaculty() && classList[i].getCourseID() == c.getCourseID()) index = i; // why error ???????????????????????????????????????????
+        if (classList[i].getFaculty() == c.getFaculty() && classList[i].getCourseID() == c.getCourseID()) { 
+            index = i; 
+        }
     }
 
     // if the course isnt in the array, return 1

@@ -145,7 +145,14 @@ int Course::removePrereq(Course p)
     return 0;    
 }
 
+// returns a string of the faculty + the course ID
+string Course::getCourseName() 
+{
+    string name = faculty + " " + to_string(courseID);
+    return name;
+}
 
+// destructor
 Course::~Course()
 {
 

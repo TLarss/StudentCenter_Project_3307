@@ -5,15 +5,18 @@ using namespace std;
 #ifndef PERSON_H
 #define PERSON_H
 
-#pragma once // what is this ????????????????????????????????????????
+#pragma once 
 
 class Person
 {
 public:
-    // Constructor 1: Sets ID and name
+    // constructor 1 (default): sets default values to ID and name
+    Person();
+
+    // Constructor 2: Sets ID and name
     Person(int i, string n);
 
-    // Constructor 2: Sets ID, name, and email
+    // Constructor 3: Sets ID, name, and email
     Person(int i, string n, string e);
 
     // Setter for email
@@ -28,14 +31,13 @@ public:
     // Getter for email
     string getEmail() const;
 
-    // destructor    DO I NEED THIS ??????????????????????????
-    //~Person(); 
+    // destructor
+    ~Person(); 
 
-private:
+protected:
     int ID;
     string name;
     string email;
-    // add a transcript!!!
 };
 
 #endif

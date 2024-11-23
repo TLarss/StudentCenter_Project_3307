@@ -2,10 +2,13 @@
 #include "Person.h"
 using namespace std;
 
-// constructor 1, initializes name and email
+// constructor 1 (default): assigns default values for ID and name
+Person::Person() : ID(0), name("default name") {}
+
+// constructor 2, initializes name and email
 Person::Person(int i, string n) : ID(i), name(n) {}
 
-// constructor 2, initializes name and email, but also email
+// constructor 3, initializes name and email, but also email
 Person::Person(int i, string n, string e) : ID(i), name(n), email(e) {}
 
 // setter for email
@@ -33,9 +36,8 @@ string Person::getEmail() const
 }
 
 
-
-// destructor          DO I NEED THIS????????????????????????????????????????????????????
-/*Person::~Person()
+// destructor
+Person::~Person()
 {
 
-}*/
+}

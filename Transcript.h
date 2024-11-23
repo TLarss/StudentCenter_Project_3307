@@ -8,7 +8,7 @@ using namespace std;
 
 #pragma once
 
-// TO DO: - add functionality so a course can be taken multiple times
+// TO DO: -add functionality so a course can be taken multiple times. -maybe add an attribute linking back to the student?
 
 class Transcript
 {
@@ -30,13 +30,10 @@ public:
     ~Transcript();
 
 private:
-    //const Course* completed = nullptr;
     Course* completed;
-    //int* grades = nullptr;
     int* grades;
-    // maybe add a year or date attribute for when course was taken????
     int size;
-    
+    // later - maybe add a year/date attribute to track when a course was taken?
 };
 
 #endif

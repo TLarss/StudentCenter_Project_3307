@@ -6,7 +6,6 @@ using namespace std;
 
 #pragma once
 
-// TO DO: add size attribute to course & use it in methods instead of .length
 
 class Course
 {
@@ -77,8 +76,7 @@ private:
     Course* prereqs;
     int prereqCount;
     int size;
-    // add a "course name" that has facult & name
-    // add prereq count attribute !!!!!!!!!!!!!!!!!!!!!!!!!
+    // later - add prereq count attribute !!
 };
 
 #endif

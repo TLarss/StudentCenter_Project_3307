@@ -16,7 +16,7 @@ class Student : public Person
 public:
     // constructor 1 (default)
     Student();
-    
+
     // constructor 2
     Student(int i, string n, int g);
     
@@ -36,31 +36,37 @@ public:
     void setAcademicStatus(string a);
 
     // getter for modules
-    Module[] getModules();
+    Module* getModules();
 
-    // setter for modules
-    void setModules(Module[] m);
+    // adder for modules
+    int addModule(Module m);
+
+    // remover for module
+    int removeModule(Module m);
 
     // getter for transcript
     Transcript getTranscript();
 
     // getter for classes
-    Course[] getClasses();
+    Course* getClasses();
 
-    // setter for classes
-    void addClass(Course c);
+    // adder for classes
+    int addClass(Course c);
 
-    //~Student(); // do i need this?????????????????????????
+    // remover for classes
+    int removeClass(Course c);
+
+    // destructor
+    ~Student();
 
 private:
     int gradYear;
-    Module[] modules;
+    Module* modules;
     string academicStatus;
     Transcript transcript;
-    Course[] classes;
-    // add more !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Course* classes;
+    int size;
+    // add more later !!
 };
 
 #endif
-
-// figure out how to handle modules and transcripts !!!!!!!!!!!!!!!!!!!!
