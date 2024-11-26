@@ -2,6 +2,9 @@
 #include "Person.h"
 #include "Course.h"
 #include "Module.h"
+#include "RequirementDashboard.h"
+#include "CourseNavigator.h"
+#include "ProgressBar.h"
 #include <iostream>
 using namespace std;
 
@@ -14,6 +17,10 @@ Student::Student()
     modules = nullptr;
     classes = nullptr;
     size = 0;
+
+    requirementDashboard = new RequirementDashboard();
+    courseNavigator = new CourseNavigator();
+    progressBar = new ProgressBar();
 }
 
 
@@ -23,6 +30,10 @@ Student::Student(int i, string n, int g) : modules(nullptr), classes(nullptr), s
     ID = i;
     name = n;
     gradYear = g;
+
+    requirementDashboard = new RequirementDashboard();
+    courseNavigator = new CourseNavigator();
+    progressBar = new ProgressBar();
 }
 
 // constructor 3, initializes ID, name, grade year, and also email
@@ -32,6 +43,10 @@ Student::Student(int i, string n, int g, string e) : modules(nullptr), classes(n
     name = n;
     gradYear = g;
     email = e;
+
+    requirementDashboard = new RequirementDashboard();
+    courseNavigator = new CourseNavigator();
+    progressBar = new ProgressBar();
 }
 
 // getter for grad year
@@ -209,6 +224,24 @@ int Student::removeClass(Course c)
     size = newSize;
 
     return 0;
+}
+
+// getter for requirementDashboard
+RequirementDashboard getRequirementDashboard()
+{
+    return requirementDashboard;
+}
+
+// getter for course navigator
+CourseNavigator getCourseNavigator()
+{
+    return courseNavigator;
+}
+
+// getter for progressBar
+ProgressBar getProgressBar()
+{
+    return progressBar
 }
 
 // destructor

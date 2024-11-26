@@ -8,29 +8,36 @@ using namespace std;
 
 #pragma once
 
+
+// TO DO: -add REGISTER option!!
+
+
 class Authenticator
 {
 public:
-    Authenticator();
-
     // returns the instance of Authenticator, if it's not initialized, it creates the instance then returns it
     static Authenticator* getInstance();
 
     // returns student object that is logged in
-    Student* getUser(); // should this be a pointer ?????????????
+    string getUser();
 
     // logs in user and opens main screen
-    int login(int i, string p);
+    int login(const string& username, const string& password);
 
     // logs out user and opens login screen
-    int logout();
+    void logout();
+
+
+private:
+    static Authenticator* instance; 
+    string loggedInUser = "NO-USER";
+    // Student* user;
+
+    // constructor
+    Authenticator();
 
     // destructor
     ~Authenticator();
-
-private:
-    static Authenticator* instance; // is this right ????????????????
-    Student* user;
 };
 
 #endif

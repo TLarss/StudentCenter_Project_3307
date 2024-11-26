@@ -4,39 +4,46 @@
 #include <iostream>
 using namespace std;
 
+// ||| SINGLETON |||
+
 // constructor
-Authenticator::Authenticator()
-{
-    // what to do here?????????????
-}
+Authenticator::Authenticator() {}
 
 // getter for instance, if the authenticator is not initialized, it creates the instance then returns it
 Authenticator* Authenticator::getInstance() 
 {
-    if (instance) return instance;
-
-    Authenticator *i = new Authenticator();
-    instance = i;
-
-    return instance;   
+    // if the instance hasn't been initialized yet, call the constructor then return the instance
+    if (!instance) instance = new Authenticator();
+    return instance; 
 }
 
 // returns the user that is currently logged in
-Student* Authenticator::getUser()
+string Authenticator::getUser()
 {
-    return user; // what to do if user is null? is there a way to catch this error???????
+    if (loggedInUser == "NO-USER") perror("Error: No user is currently logged in.");
+    return loggedInUser;
 }
 
 // logs in user and opens main screen
-int Authenticator::login(int i, string p)
+int Authenticator::login(const string& username, const string& password)
 {
-    // ???????????????????
+    // ADD IN CALL TO DATABASE LATER!!!!!!!!
+
+    // test username and password for now
+    if (username == "test_user" && password == "secure_password") {
+        loggedInUser = username;
+        return 0;
+    }
+
+    else {
+        return 1;
+    }
 }
 
 // logs out user and opens login screen
-int Authenticator::logout()
+void Authenticator::logout()
 {
-    // ?????????????????????
+    loggedInUser = "NO-USER";
 }
 
 // destructor

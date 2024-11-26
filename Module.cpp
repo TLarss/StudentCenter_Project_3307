@@ -128,6 +128,12 @@ void Module::setType(string t)
     type = t;
 }
 
+// getter for size
+int Module::getSize()
+{
+    return size;
+}
+
 // destructor 
 Module::~Module()
 {

@@ -46,13 +46,15 @@ public:
     // setter for type
     void setType(string t);
 
+    // getter for size
+    int getSize();
+
     // destructor
     ~Module();
 
 private:
     string name;
     Course* classList;
-    int classListLen;
     float numCredits;
     string type; // type is major, minor, specialization, etc...
     int size;

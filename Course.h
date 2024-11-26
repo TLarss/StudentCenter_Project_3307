@@ -18,7 +18,6 @@ public:
 
     void setPrereqCount(int c);
 
-
     int getPrereqCount();
 
     // getter for faculty

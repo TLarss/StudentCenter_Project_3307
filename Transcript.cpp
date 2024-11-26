@@ -2,6 +2,7 @@
 #include "Transcript.h"
 #include "Student.h"
 #include "Course.h"
+#include "Authenticator.h"
 #include <cstring>
 using namespace std;
 
@@ -45,6 +46,8 @@ void Transcript::addCompleted(Course c, int g)
     grades = newGrades;
 
     size = newSize;
+
+    notifyObservers();
 }
 
 // remove completed, returns 0 for success & 1 for error (IF THERE ARE MULTIPLE OF THE SAME COURSE, ONLY ONE WILL BE ERASED)
@@ -100,6 +103,8 @@ int Transcript::removeCompleted(Course c)
 
     size = newSize;
 
+    notifyObservers();
+
     return 0;
 }
 
@@ -121,7 +126,36 @@ int Transcript::changeGrade(Course c, int g)
     // change the corresponding grade
     grades[index] = g;
 
+    notifyObservers();
+
     return 0;
+}
+
+// getter for grades
+const int* Transcript::getGrades() const
+{
+    return grades;
+}
+
+// getter for size
+int Transcript::getSize()
+{
+    return size;
+}
+
+// 
+void Transcript::notifyObservers()
+{
+    Authenticator* a = Authenticator.getInstance();
+    Student s = a.getUser();
+
+    CourseNavigator cn = s.getCourseNavigator();
+    ProgressBar pb = s.getProgressBar();
+    RequirementDashboard rd = s.getRequirementDashboard();
+
+    cn.update(s);
+    pb.update(s);
+    rd.update(s);
 }
 
 // destrutor 

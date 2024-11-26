@@ -3,6 +3,9 @@
 #include "Course.h"
 #include "Module.h"
 #include "Transcript.h"
+#include "RequirementDashboard.h"
+#include "CourseNavigator.h"
+#include "ProgressBar.h"
 
 using namespace std;
 
@@ -56,6 +59,15 @@ public:
     // remover for classes
     int removeClass(Course c);
 
+    // getter for requirementDashboard
+    RequirementDashboard getRequirementDashboard();
+
+    // getter for course navigator
+    CourseNavigator getCourseNavigator();
+
+    // getter for progressBar
+    ProgressBar getProgressBar():
+
     // destructor
     ~Student();
 
@@ -66,6 +78,9 @@ private:
     Transcript transcript;
     Course* classes;
     int size;
+    RequirementDashboard requirementDashboard;
+    CourseNavigator courseNavigator;
+    ProgressBar progressBar;
     // add more later !!
 };
 
