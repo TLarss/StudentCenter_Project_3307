@@ -51,10 +51,10 @@ public:
     Transcript getTranscript();
 
     // getter for classes
-    Course* getClasses();
+    Course* getClasses(); 
 
     // adder for classes
-    int addClass(Course c);
+    int addClass(Course c); 
 
     // remover for classes
     int removeClass(Course c);
@@ -76,7 +76,7 @@ private:
     Module* modules;
     string academicStatus;
     Transcript transcript;
-    Course* classes;
+    Course* classes; // CourseList classes;
     int size;
     RequirementDashboard requirementDashboard;
     CourseNavigator courseNavigator;

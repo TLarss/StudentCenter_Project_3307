@@ -56,7 +56,6 @@ public:
     // setter for prereqs
     int addPrereq(Course p);
 
-
     // to remove a prereq, returns 0 for success, and returns 1 for class not found
     int removePrereq(Course p);
 
