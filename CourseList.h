@@ -1,9 +1,4 @@
 #include "Course.h"
-#include "Authenticator.h"
-#include "Module.h"
-#include "Person.h"
-#include "Student.h"
-#include "Transcript.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -22,7 +17,7 @@ public:
     CourseList();
 
     // getter
-    vector<Course> getCourseList();
+    const vector<Course> getCourseList() const;
 
     // adder
     int addCourse(Course c);
@@ -33,13 +28,15 @@ public:
     // getter for credits
     float getCredits();
 
+    // find a course in the list
+    int findCourse(Course c);
+
     // destructor
     ~CourseList();
 
 private:
-    vector<Course>;
+    vector<Course> list;
     float credits;
-
 };
 
 #endif

@@ -1,5 +1,6 @@
-#include "Observer.h"
 #include <iostream>
+#include <string>
+#include "Observer.h"
 using namespace std;
 
 #ifndef COURSENAVIGATOR_H

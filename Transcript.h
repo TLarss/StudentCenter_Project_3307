@@ -1,6 +1,10 @@
 #include <iostream>
+#include <string>
+#include <vector>
 #include "Course.h"
 #include "Student.h"
+#include "CourseList.h"
+#include "ModuleList.h"
 using namespace std;
 
 #ifndef TRANSCRIPT_H
@@ -15,13 +19,11 @@ class Transcript
 public:
     Transcript();
 
-    // constructor 2, takes student as input
-
     // getter for completed courses
-    const Course* getCompleted() const;
+    const vector<Course> getCompleted() const;
 
     // adder for completed, returns 0 for success & 1 for error
-    void addCompleted(Course c, int g);
+    int addCompleted(Course c, int g);
 
     // remove completed, returns 0 for success & 1 for error
     int removeCompleted(Course c);
@@ -30,7 +32,7 @@ public:
     int changeGrade(Course c, int g);
 
     // getter for grades
-    const int* getGrades() const;
+    const vector<int> getGrades() const;
 
     // getter for size
     int getSize();
@@ -38,8 +40,8 @@ public:
     ~Transcript();
 
 private:
-    Course* completed;
-    int* grades;
+    CourseList completed;
+    vector<int> grades;
     int size;
     // later - maybe add a year/date attribute to track when a course was taken?
 

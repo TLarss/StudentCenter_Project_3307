@@ -1,10 +1,5 @@
 #include "CourseList.h"
 #include "Course.h"
-#include "Authenticator.h"
-#include "Module.h"
-#include "Person.h"
-#include "Student.h"
-#include "Transcript.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -14,7 +9,7 @@ using namespace std;
 CourseList::CourseList() : credits(0) {}
 
 // getter
-CourseList::getCourseList()
+const vector<Course> CourseList::getCourseList() const
 {
     return list;
 }
@@ -48,12 +43,12 @@ int CourseList::removeCourse(Course c)
     // if the course is not in the list, return 1
     if (index == -1) {
         printf("Course not found in list\n");
-        return 1
+        return 1;
     }
 
     // remove the course from the list and decrement credits
     else {
-        list.erase(list.begin()+i); // test this !!!!!!!!!!!!!!!!!
+        list.erase(list.begin()+index); // test this !!!!!!!!!!!!!!!!!
         float creds = c.getNumCredits();
         credits -= creds;
         return 0;
@@ -64,6 +59,16 @@ int CourseList::removeCourse(Course c)
 float CourseList::getCredits()
 {
     return credits;
+}
+
+int CourseList::findCourse(Course c)
+{
+    int index = -1;
+    for (int i = 0; i < list.size(); i++) {
+        if (list[i].getCourseName() == c.getCourseName()) index = i;
+    }
+
+    return index;
 }
 
 // destructor, does nothing

@@ -5,6 +5,11 @@
 #include "RequirementDashboard.h"
 #include "CourseNavigator.h"
 #include "ProgressBar.h"
+#include "CourseList.h"
+#include "ModuleList.h"
+#include "Transcript.h"
+#include <string>
+#include <vector>
 #include <iostream>
 using namespace std;
 
@@ -12,11 +17,10 @@ using namespace std;
 // constructor 1, default constructor, takes no inputs & uses default values
 Student::Student() 
 {
+    classes = new CourseList();
+    modules = new ModuleList();
     ID = 0;
     name = "student name";
-    modules = nullptr;
-    classes = nullptr;
-    size = 0;
 
     requirementDashboard = new RequirementDashboard();
     courseNavigator = new CourseNavigator();
@@ -24,9 +28,11 @@ Student::Student()
 }
 
 
-// constructor 2, initializes ID, name and grad year
-Student::Student(int i, string n, int g) : modules(nullptr), classes(nullptr), size(0)
+// constructor 2, initializes ID, name, classes, modules, and grad year
+Student::Student(int i, string n, int g) 
 {
+    classes = new CourseList();
+    modules = new ModuleList();
     ID = i;
     name = n;
     gradYear = g;
@@ -36,9 +42,11 @@ Student::Student(int i, string n, int g) : modules(nullptr), classes(nullptr), s
     progressBar = new ProgressBar();
 }
 
-// constructor 3, initializes ID, name, grade year, and also email
-Student::Student(int i, string n, int g, string e) : modules(nullptr), classes(nullptr), size(0)
+// constructor 3, initializes ID, name, grade year, classes, modules, and also email
+Student::Student(int i, string n, int g, string e)
 {
+    classes = new CourseList();
+    modules = new ModuleList();
     ID = i;
     name = n;
     gradYear = g;
@@ -74,15 +82,16 @@ void Student::setAcademicStatus(string a)
 }
 
 // getter for modules
-Module* Student::getModules()
+const vector<Module> Student::getModules() const
 {
-    return modules;
+    return modules.getModuleList();
 }
 
 // adder for modules, returns 0 for success & 1 for error
 int Student::addModule(Module m)
 {
-    // check and return 1 if the module is already in the list
+    return modules.addModule(m);
+    /*// check and return 1 if the module is already in the list
     for (int i = 0; i < size; i++) {
         if (modules[i].getName() == m.getName()) {
             return 1;
@@ -109,12 +118,15 @@ int Student::addModule(Module m)
 
     // replace old size attribute
     size = newSize;
+
+    return 0;*/
 }
 
 // remover for modules
 int Student::removeModule(Module m)
 {
-    // look through modules array to find the index of the module to remove 
+    return modules.removeModule(m);
+    /*// look through modules array to find the index of the module to remove 
     int index = -1;
     for (int i = 0; i < size; i++) {
         if (modules[i].getName() == m.getName()) index = i;
@@ -144,7 +156,7 @@ int Student::removeModule(Module m)
 
     size = newSize;
 
-    return 0;
+    return 0;*/
 }
 
 // getter for transcript
@@ -154,15 +166,16 @@ Transcript Student::getTranscript()
 }
 
 // getter for classes
-Course* Student::getClasses()
+const vector<Course> Student::getClasses() const
 {
-    return classes;
+    return classes.getCourseList();
 }
 
 // adder for classes, won't accept duplicate courses, returns 0 for success or 1 for error
 int Student::addClass(Course c) 
 {
-    // check and return 1 if the course is already in the list
+    return classes.addCourse(c);
+    /*// check and return 1 if the course is already in the list
     for (int i = 0; i < size; i++) {
         if (classes[i].getCourseID() == c.getCourseID() && classes[i].getFaculty() == c.getFaculty()) {
             return 1;
@@ -186,12 +199,15 @@ int Student::addClass(Course c)
 
     // replace old size attribute
     size = newSize;
+
+    return 0;*/
 }
 
 // remover for classes
 int Student::removeClass(Course c) 
 {
-    // look through classes array to find the index of the course to remove 
+    return classes.removeCourse(c);
+    /*// look through classes array to find the index of the course to remove 
     int index = -1;
     for (int i = 0; i < size; i++) {
         if (classes[i].getFaculty() == c.getFaculty() && classes[i].getCourseID() == c.getCourseID()) {
@@ -223,7 +239,7 @@ int Student::removeClass(Course c)
 
     size = newSize;
 
-    return 0;
+    return 0;*/
 }
 
 // getter for requirementDashboard

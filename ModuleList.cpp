@@ -1,10 +1,13 @@
 #include "ModuleList.h"
+#include <string>
+#include <vector>
+using namespace std;
 
 // constructor (default), does nothing
 ModuleList::ModuleList() {}
 
 // getter
-vector<Moduule> ModuleList::getModuleList()
+const vector<Module> ModuleList::getModuleList() const
 {
     return list;
 }
@@ -37,12 +40,12 @@ int ModuleList::removeModule(Module m)
     // if the course is not in the list, return 1
     if (index == -1) {
         printf("module not found in list\n");
-        return 1
+        return 1;
     }
 
     // remove the course from the list and decrement credits
     else {
-        list.erase(list.begin()+i); // test this !!!!!!!!!!!!!!!!!
+        list.erase(list.begin()+index); // test this !!!!!!!!!!!!!!!!!
         return 0;
     }
 }

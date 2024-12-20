@@ -5,20 +5,20 @@
 using namespace std;
 
 // constructor 1 (default): takes no input, gives default values to Faculty, courseID, size, and initializes prereqs
-Course::Course() : faculty("default"), courseID(0), prereqs(nullptr), size(0) {}
+Course::Course() : faculty("default"), courseID(0), size(0) {}
 
 // constructor 2: 
-Course::Course(string f, int i) : prereqs(nullptr)
+Course::Course(string f, int i)
 {
     faculty = f;
     courseID = i;
 }
 
-void Course::setPrereqCount(int c)
+/*void Course::setPrereqCount(int c)
 {
     prereqCount = c;
     prereqs = new Course[c]; // move this around !!!!!!!!!!!!!!!!
-}
+}*/
 
 string Course::getFaculty()
 {
@@ -70,15 +70,17 @@ void Course::setNumCredits(float n)
     numCredits = n;
 }
 
-Course* Course::getPrereqs()
+const vector<Course> Course::getPrereqs() const
 {
-    return prereqs;
+    return prereqs.getCourseList();
 }
 
 // adds course to prereqs list, returns 0 for success & 1 for error
 int Course::addPrereq(Course p)
 { 
-    // check if the course is already in the list
+    return prereqs.addCourse(p);
+
+    /*// check if the course is already in the list
     int flag = 0;
     for (int i = 0; i < size; i++) {
         if (prereqs[i].getCourseID() == p.getCourseID() && prereqs[i].getFaculty() == p.getFaculty()) {
@@ -105,12 +107,14 @@ int Course::addPrereq(Course p)
     prereqs = newPrereqs;
     size = newSize;
 
-    return 0;
+    return 0;*/
 }
 
 int Course::removePrereq(Course p)
 {
-    // look through array to find index of the course
+    return prereqs.removeCourse(p);
+    
+    /*// look through array to find index of the course
     int index = -1;
     for (int i = 0; i < size; i++) {
         if (prereqs[i].getFaculty() == p.getFaculty() && prereqs[i].getCourseID() == p.getCourseID()) {
@@ -142,7 +146,7 @@ int Course::removePrereq(Course p)
 
     size = newSize;
 
-    return 0;    
+    return 0;*/
 }
 
 // returns a string of the faculty + the course ID
@@ -150,6 +154,18 @@ string Course::getCourseName()
 {
     string name = faculty + " " + to_string(courseID);
     return name;
+}
+
+// setter for breadth
+void Course::setBreadth(char b)
+{
+    breadth = b;
+}
+
+// getter for breadth
+char Course::getBreadth()
+{
+    return breadth;
 }
 
 // destructor

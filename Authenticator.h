@@ -1,6 +1,7 @@
 #include "Person.h"
 #include "Student.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 #ifndef AUTHENTICATOR_H

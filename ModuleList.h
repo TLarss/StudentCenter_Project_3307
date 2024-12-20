@@ -1,9 +1,4 @@
-#include "Course.h"
-#include "Authenticator.h"
 #include "Module.h"
-#include "Person.h"
-#include "Student.h"
-#include "Transcript.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -21,7 +16,7 @@ public:
     ModuleList();
 
     // getter
-    vector<Moduule> getModuleList();
+    const vector<Module> getModuleList() const;
 
     // adder
     int addModule(Module m);
@@ -33,7 +28,7 @@ public:
     ~ModuleList();
 
 private:
-    veector<Module> list;
+    vector<Module> list;
 };
 
 #endif

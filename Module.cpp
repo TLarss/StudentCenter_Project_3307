@@ -1,12 +1,15 @@
 #include "Module.h"
 #include "Course.h"
+#include "CourseList.h"
 #include <cstring>
+#include <string>
+#include <vector>
 #include <iostream>
 using namespace std;
 
-Module::Module() : name("defaul name"), size(0), classList(nullptr) {}
+Module::Module() : name("defaul name"), size(0) {}
 
-Module::Module(string n) : size(0), classList(nullptr)
+Module::Module(string n) : size(0)
 {
     name = n;
 }
@@ -24,15 +27,17 @@ void Module::setName(string n)
 }
 
 // getter for class list
-const Course* Module::getClassList() 
+const vector<Course> Module::getClassList() const
 {
-    return classList;
+    return classList.getCourseList();
 }
 
 // add class to course list, return 0 for success or 1 for error
 int Module::addClass(Course c)
 {
-    // check and return 1 if the course is already in the list
+    return classList.addCourse(c);
+
+    /*// check and return 1 if the course is already in the list
     for (int i = 0; i < size; i++) {
         if (classList[i].getCourseID() == c.getCourseID() && classList[i].getFaculty() == c.getFaculty()) {
             return 1;
@@ -57,13 +62,15 @@ int Module::addClass(Course c)
     // replace old size attribute
     size = newSize;
 
-    return 0;
+    return 0;*/
 }
 
 // remove class from course list, return 0 for success or 1 for error
 int Module::removeClass(Course c)
 {
-    // look through completed array to find the index of the course to remove 
+    return classList.removeCourse(c);
+    
+    /*// look through completed array to find the index of the course to remove 
     int index = -1;
     for (int i = 0; i < size; i++) {
         if (classList[i].getFaculty() == c.getFaculty() && classList[i].getCourseID() == c.getCourseID()) { 
@@ -95,7 +102,7 @@ int Module::removeClass(Course c)
 
     size = newSize;
 
-    return 0;
+    return 0;*/
 }
 
 // getter for num credits

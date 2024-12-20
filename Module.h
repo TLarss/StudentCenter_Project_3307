@@ -1,5 +1,8 @@
 #include <iostream>
+#include <string>
+#include <vector>
 #include "Course.h"
+#include "CourseList.h"
 using namespace std;
 
 #ifndef MODULE_H
@@ -23,7 +26,7 @@ public:
     void setName(string n);
 
     // getter for class list
-    const Course* getClassList();
+    const vector<Course> getClassList() const;
 
     // method to add a class to the class list
     int addClass(Course c); 
@@ -54,7 +57,7 @@ public:
 
 private:
     string name;
-    Course* classList;
+    CourseList classList;
     float numCredits;
     string type; // type is major, minor, specialization, etc...
     int size;

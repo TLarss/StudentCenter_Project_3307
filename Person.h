@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Transcript.h"
+#include <string>
 using namespace std;
 
 #ifndef PERSON_H

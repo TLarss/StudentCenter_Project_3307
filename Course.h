@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 #ifndef COURSE_H
@@ -16,9 +17,9 @@ public:
     // constructor 2, only initializes faculty and course ID
     Course(string f, int i);
 
-    void setPrereqCount(int c);
+    //void setPrereqCount(int c);
 
-    int getPrereqCount();
+    //int getPrereqCount();
 
     // getter for faculty
     string getFaculty();
@@ -51,7 +52,7 @@ public:
     void setNumCredits(float n);
 
     // getter for prereqs
-    Course* getPrereqs();
+    const vector<Course> getPrereqs() const;
 
     // setter for prereqs
     int addPrereq(Course p);
@@ -62,6 +63,13 @@ public:
     // get the course name  (returns the facult + course number)
     string getCourseName();
 
+    // setter for breadth
+    void setBreadth(char b);
+
+    // getter for breadth
+    char getBreadth();
+
+
     // destructor
     ~Course();
 
@@ -71,8 +79,9 @@ private:
     string title;
     char type;
     float numCredits;
-    Course* prereqs;
-    int prereqCount;
+    CourseList prereqs;
+    char breadth;
+    //int prereqCount;
     int size;
     // later - add prereq count attribute !!
 };

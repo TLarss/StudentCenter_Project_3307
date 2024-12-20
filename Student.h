@@ -1,11 +1,15 @@
 #include <iostream>
-#include "Person.h"
+#include <string>
+#include <vector>
+/*#include "Person.h"
 #include "Course.h"
 #include "Module.h"
 #include "Transcript.h"
 #include "RequirementDashboard.h"
 #include "CourseNavigator.h"
 #include "ProgressBar.h"
+#include "CourseList.h"
+#include "ModuleList.h"*/
 
 using namespace std;
 
@@ -39,7 +43,7 @@ public:
     void setAcademicStatus(string a);
 
     // getter for modules
-    Module* getModules();
+    const vector<Module> getModules() const;
 
     // adder for modules
     int addModule(Module m);
@@ -51,7 +55,7 @@ public:
     Transcript getTranscript();
 
     // getter for classes
-    Course* getClasses(); 
+    const vector<Course> getClasses() const; 
 
     // adder for classes
     int addClass(Course c); 
@@ -66,17 +70,19 @@ public:
     CourseNavigator getCourseNavigator();
 
     // getter for progressBar
-    ProgressBar getProgressBar():
+    ProgressBar getProgressBar();
 
     // destructor
     ~Student();
 
 private:
     int gradYear;
-    Module* modules;
+    //Module* modules;
+    ModuleList modules;
     string academicStatus;
     Transcript transcript;
-    Course* classes; // CourseList classes;
+    //Course* classes; // CourseList classes;
+    CourseList classes;
     int size;
     RequirementDashboard requirementDashboard;
     CourseNavigator courseNavigator;
