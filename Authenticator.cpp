@@ -1,7 +1,4 @@
 #include "Authenticator.h"
-#include "Person.h"
-#include "Student.h"
-#include <iostream>
 using namespace std;
 
 // ||| SINGLETON |||
@@ -18,9 +15,9 @@ Authenticator* Authenticator::getInstance()
 }
 
 // returns the user that is currently logged in
-string Authenticator::getUser()
+Student Authenticator::getUser()
 {
-    if (loggedInUser == "NO-USER") perror("Error: No user is currently logged in.");
+    if (loggedIn == "no") perror("Error: No user is currently logged in.");
     return loggedInUser;
 }
 
@@ -32,6 +29,7 @@ int Authenticator::login(const string& username, const string& password)
     // test username and password for now
     if (username == "test_user" && password == "secure_password") {
         loggedInUser = username;
+        loggedIn = "yes"
         return 0;
     }
 

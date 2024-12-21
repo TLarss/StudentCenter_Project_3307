@@ -1,8 +1,4 @@
 #include "CourseList.h"
-#include "Course.h"
-#include <iostream>
-#include <string>
-#include <vector>
 using namespace std;
 
 // constructor (default), sets credits to 0

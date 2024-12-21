@@ -1,8 +1,4 @@
 #include "CourseNavigator.h"
-#include "Transcript.h"
-#include "Course.h"
-#include <iostream>
-#include <vector>
 using namespace std;
 
 CourseNavigator::CourseNavigator()
@@ -17,10 +13,10 @@ void CourseNavigator::printCompletedCourses(Student u)
 
     printf("\n--------------------------------------------------\n");
 
-    if (completedCourses.size() == 0) printf("Completed Courses: none\n")
+    if (completedCourses.size() == 0) printf("Completed Courses: none\n");
 
     else {
-        printf("Completed Courses:\n")
+        printf("Completed Courses:\n");
         for (int i = 0; i < completedCourses.size(); i++) {
             printf("%s, ", completedCourses[i].getCourseName());
             i++;

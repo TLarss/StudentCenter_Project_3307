@@ -1,11 +1,4 @@
 #include "RequirementDashboard.h"
-#include "Student.h"
-#include "Course.h"
-#include "Module.h"
-#include "Transcript.h"
-#include <iostream>
-#include <string>
-#include <vector>
 using namespace std;
 
 

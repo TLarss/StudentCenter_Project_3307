@@ -1,24 +1,12 @@
 #include "Student.h"
-#include "Person.h"
-#include "Course.h"
-#include "Module.h"
-#include "RequirementDashboard.h"
-#include "CourseNavigator.h"
-#include "ProgressBar.h"
-#include "CourseList.h"
-#include "ModuleList.h"
-#include "Transcript.h"
-#include <string>
-#include <vector>
-#include <iostream>
 using namespace std;
 
 
 // constructor 1, default constructor, takes no inputs & uses default values
 Student::Student() 
 {
-    classes = new CourseList();
-    modules = new ModuleList();
+    //classes = new CourseList();
+    //modules = new ModuleList();
     ID = 0;
     name = "student name";
 
@@ -31,8 +19,8 @@ Student::Student()
 // constructor 2, initializes ID, name, classes, modules, and grad year
 Student::Student(int i, string n, int g) 
 {
-    classes = new CourseList();
-    modules = new ModuleList();
+    //classes = new CourseList();
+    //modules = new ModuleList();
     ID = i;
     name = n;
     gradYear = g;
@@ -45,8 +33,8 @@ Student::Student(int i, string n, int g)
 // constructor 3, initializes ID, name, grade year, classes, modules, and also email
 Student::Student(int i, string n, int g, string e)
 {
-    classes = new CourseList();
-    modules = new ModuleList();
+    //classes = new CourseList();
+    //modules = new ModuleList();
     ID = i;
     name = n;
     gradYear = g;
@@ -84,13 +72,25 @@ void Student::setAcademicStatus(string a)
 // getter for modules
 const vector<Module> Student::getModules() const
 {
-    return modules.getModuleList();
+    return modules;
 }
 
 // adder for modules, returns 0 for success & 1 for error
 int Student::addModule(Module m)
 {
-    return modules.addModule(m);
+    // check if the module is already in the list
+    for (int i = 0; i < modules.size(); i++) {
+        if (modules[i].getName() == m.getName() && modules[i].getType() == m.getType()) {
+            printf("module is already in list\n");
+            return 1;
+        }
+    }
+
+    // add module to list
+    list.push_back(m);
+    return 0;
+
+
     /*// check and return 1 if the module is already in the list
     for (int i = 0; i < size; i++) {
         if (modules[i].getName() == m.getName()) {
@@ -125,7 +125,25 @@ int Student::addModule(Module m)
 // remover for modules
 int Student::removeModule(Module m)
 {
-    return modules.removeModule(m);
+    // look for module in list
+    int index = -1;
+    for (int i = 0; i < modules.size(); i++) {
+        if (modules[i].getName() == m.getName() && modules[i].getType() == m.getType()) index = i;
+    }
+
+    // if the course is not in the list, return 1
+    if (index == -1) {
+        printf("module not found in list\n");
+        return 1;
+    }
+
+    // remove the course from the list and decrement credits
+    else {
+        modules.erase(modules.begin()+index); // test this !!!!!!!!!!!!!!!!!
+        return 0;
+    }
+
+
     /*// look through modules array to find the index of the module to remove 
     int index = -1;
     for (int i = 0; i < size; i++) {
@@ -168,13 +186,26 @@ Transcript Student::getTranscript()
 // getter for classes
 const vector<Course> Student::getClasses() const
 {
-    return classes.getCourseList();
+    return classes;
 }
 
 // adder for classes, won't accept duplicate courses, returns 0 for success or 1 for error
 int Student::addClass(Course c) 
 {
-    return classes.addCourse(c);
+    // check if the course is already in the list
+    for (int i = 0; i < classes.size(); i++) {
+        if (classes[i].getCourseName() == c.getCourseName()) {
+            printf("course is already in list\n");
+            return 1;
+        }
+    }
+
+    // add course to list and incrament credits
+    classes.push_back(c);
+    //credits += c.getNumCredits();
+    return 0;
+
+
     /*// check and return 1 if the course is already in the list
     for (int i = 0; i < size; i++) {
         if (classes[i].getCourseID() == c.getCourseID() && classes[i].getFaculty() == c.getFaculty()) {
@@ -206,7 +237,27 @@ int Student::addClass(Course c)
 // remover for classes
 int Student::removeClass(Course c) 
 {
-    return classes.removeCourse(c);
+    // look for course in list
+    int index = -1;
+    for (int i = 0; i < classes.size(); i++) {
+        if (classes[i].getCourseName() == c.getCourseName()) index = i;
+    }
+
+    // if the course is not in the list, return 1
+    if (index == -1) {
+        printf("Course not found in list\n");
+        return 1;
+    }
+
+    // remove the course from the list and decrement credits
+    else {
+        classes.erase(classes.begin()+index); // test this !!!!!!!!!!!!!!!!!
+        //float creds = c.getNumCredits();
+        //credits -= creds;
+        return 0;
+    }
+
+
     /*// look through classes array to find the index of the course to remove 
     int index = -1;
     for (int i = 0; i < size; i++) {
@@ -242,7 +293,7 @@ int Student::removeClass(Course c)
     return 0;*/
 }
 
-// getter for requirementDashboard
+/*// getter for requirementDashboard
 RequirementDashboard getRequirementDashboard()
 {
     return requirementDashboard;
@@ -258,7 +309,7 @@ CourseNavigator getCourseNavigator()
 ProgressBar getProgressBar()
 {
     return progressBar
-}
+}*/
 
 // destructor
 Student::~Student()

@@ -1,40 +1,34 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <cstring>
 #include "Transcript.h"
 #include "Student.h"
-#include "Course.h"
-#include "Authenticator.h"
-#include "CourseList.h"
-#include "ModuleList.h"
-#include "CourseNavigator.h"
-#include "ProgressBar.h"
 #include "RequirementDashboard.h"
-
+#include "ProgressBar.h"
+#include "CourseNavigator.h"
 using namespace std;
 
-Transcript::Transcript() : size(0)
-{
-    completed = new CourseList();
-}
+Transcript::Transcript() : size(0) {}
 
 // getter for completed list
 const vector<Course> Transcript::getCompleted() const
 {
-    return completed.getCourseList();
+    return completed;
 }
 
 // adder for completed
 int Transcript::addCompleted(Course c, int g)
 {
-    if (completed.addCourse(c) == 1) return 1;
-    else {
-        size++;
-        grades.push_back(g);
-        notifyObservers(); // is this where/how im supposed to do this??????????????
-        return 0;
+    // check if the course is already in the list
+    for (int i = 0; i < completed.size(); i++) {
+        if (completed[i].getCourseName() == c.getCourseName()) {
+            printf("course is already in list\n");
+            return 1;
+        }
     }
+
+    // add course to list and incrament credits
+    completed.push_back(c);
+    grades.push_back(g);
+    notifyObservers(); // is this where/how im supposed to do this??????????????
+    return 0;
 
     /*// create a new size & completed 1 bigger than the origional
     int newSize = size + 1;
@@ -72,19 +66,24 @@ int Transcript::addCompleted(Course c, int g)
 // remove completed, returns 0 for success & 1 for error (IF THERE ARE MULTIPLE OF THE SAME COURSE, ONLY ONE WILL BE ERASED)
 int Transcript::removeCompleted(Course c)
 {
-    // check if the course is in the list
-    int index = completed.findCourse(c);
+    // look for course in list
+    int index = -1;
+    for (int i = 0; i < completed.size(); i++) {
+        if (completed[i].getCourseName() == c.getCourseName()) index = i;
+    }
+
+    // if the course is not in the list, return 1
     if (index == -1) {
         printf("Course not found in list\n");
         return 1;
     }
 
-    // if it is in the list, remove it & the grade, decrement the size, and return 0
-    completed.removeCourse(c);
+    // remove the course from the list and decrement credits
+    completed.erase(completed.begin()+index); // test this !!!!!!!!!!!!!!!!!
     grades.erase(grades.begin() + index);
-    size--;
     notifyObservers(); // is this where/how im supposed to do this??????????????
     return 0;
+    
 
     /*// look through completed array to find the index of the course to remove 
     int index = -1;
@@ -145,7 +144,10 @@ int Transcript::removeCompleted(Course c)
 int Transcript::changeGrade(Course c, int g) 
 {
     // ensure the course is in the list
-    int index = completed.findCourse(c);
+    int index = -1;
+    for (int i = 0; i < completed.size(); i++) {
+        if (completed[i].getCourseName() == c.getCourseName()) index = i;
+    }
     if (index == -1) {
         printf("Course not found in list\n");
         return 1;

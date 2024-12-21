@@ -1,5 +1,5 @@
-#include "Observer.h"
 #include "Student.h"
+#include "Observer.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,7 +19,7 @@ class RequirementDashboard : public Observer
 public:
     RequirementDashboard();
 
-    RequirementDashboard(string doc);
+    //RequirementDashboard(string doc);
 
     void printRequirements(Student u);
 

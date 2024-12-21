@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+using namespace std;
 
 #ifndef COURSE_H
 #define COURSE_H
@@ -8,12 +9,12 @@
 #pragma once
 
 // Forward declaration of CourseList
-class CourseList;
+// class CourseList;
 
 class Course {
 public:
     Course();
-    Course(std::string f, int i);
+    Course(std::string f, int i, char t, char b, float c);
 
     std::string getFaculty();
     void setFaculty(std::string f);
@@ -30,7 +31,7 @@ public:
     float getNumCredits();
     void setNumCredits(float n);
 
-    const std::vector<Course> getPrereqs() const;
+    const vector<Course> getPrereqs() const;
     int addPrereq(Course p);
     int removePrereq(Course p);
 
@@ -47,7 +48,7 @@ private:
     std::string title;
     char type;
     float numCredits;
-    CourseList* prereqs; // Use pointer instead of full definition
+    vector<Course> prereqs;
     char breadth;
     int size;
 };

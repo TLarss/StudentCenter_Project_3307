@@ -8,9 +8,6 @@
 #include "RequirementDashboard.h"
 #include "CourseNavigator.h"
 #include "ProgressBar.h"
-#include "CourseList.h"
-#include "ModuleList.h"
-
 using namespace std;
 
 #ifndef STUDENT_H
@@ -77,12 +74,12 @@ public:
 
 private:
     int gradYear;
-    //Module* modules;
-    ModuleList modules;
+    vector<Module> modules;
+    //ModuleList modules;
     string academicStatus;
     Transcript transcript;
-    //Course* classes; // CourseList classes;
-    CourseList classes;
+    vector<Course> classes;
+    //CourseList classes;
     int size;
     RequirementDashboard requirementDashboard;
     CourseNavigator courseNavigator;

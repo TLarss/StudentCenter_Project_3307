@@ -1,8 +1,4 @@
 #include "ProgressBar.h"
-#include "Observer.h"
-#include "Student.h"
-#include "Transcript.h"
-#include <iostream>
 using namespace std;
 
 ProgressBar::ProgressBar()
@@ -13,7 +9,7 @@ ProgressBar::ProgressBar()
 void ProgressBar::printProgressBar(Student u)
 {
     printf("\n--------------------------------------------------\n\n");
-    
+
     Transcript t = u.getTranscript();
     const vector<Course> completed = t.getCompleted();
     const vector<int> grades = t.getGrades();

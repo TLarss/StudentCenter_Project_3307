@@ -2,6 +2,7 @@
 #include <string>
 #include "Observer.h"
 #include "Student.h"
+//#include "all_headers.h"
 using namespace std;
 
 #ifndef COURSENAVIGATOR_H

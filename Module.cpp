@@ -1,10 +1,4 @@
 #include "Module.h"
-#include "Course.h"
-//#include "CourseList.h"
-#include <cstring>
-#include <string>
-#include <vector>
-#include <iostream>
 using namespace std;
 
 Module::Module() : name("defaul name"), size(0) {}
@@ -27,15 +21,26 @@ void Module::setName(string n)
 }
 
 // getter for class list
-const vector<Course> Module::getClassList() const
+vector<Course> Module::getClassList() const
 {
-    return classList.getCourseList();
+    return classList;
 }
 
 // add class to course list, return 0 for success or 1 for error
 int Module::addClass(Course c)
 {
-    return classList.addCourse(c);
+    // check if the course is already in the list
+    for (int i = 0; i < classList.size(); i++) {
+        if (classList[i].getCourseName() == c.getCourseName()) {
+            printf("course is already in list\n");
+            return 1;
+        }
+    }
+
+    // add course to list and incrament credits
+    classList.push_back(c);
+    numCredits += c.getNumCredits();
+    return 0;
 
     /*// check and return 1 if the course is already in the list
     for (int i = 0; i < size; i++) {
@@ -68,7 +73,25 @@ int Module::addClass(Course c)
 // remove class from course list, return 0 for success or 1 for error
 int Module::removeClass(Course c)
 {
-    return classList.removeCourse(c);
+    // look for course in list
+    int index = -1;
+    for (int i = 0; i < classList.size(); i++) {
+        if (classList[i].getCourseName() == c.getCourseName()) index = i;
+    }
+
+    // if the course is not in the list, return 1
+    if (index == -1) {
+        printf("Course not found in list\n");
+        return 1;
+    }
+
+    // remove the course from the list and decrement credits
+    else {
+        classList.erase(classList.begin()+index); // test this !!!!!!!!!!!!!!!!!
+        float creds = c.getNumCredits();
+        numCredits -= creds;
+        return 0;
+    }
     
     /*// look through completed array to find the index of the course to remove 
     int index = -1;

@@ -1,5 +1,8 @@
-#include "Person.h"
+//#include "Person.h"
 #include "Student.h"
+#include <iostream>
+#include <string>
+//#include "all_headers.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,7 +23,7 @@ public:
     static Authenticator* getInstance();
 
     // returns student object that is logged in
-    string getUser();
+    Student getUser();
 
     // logs in user and opens main screen
     int login(const string& username, const string& password);
@@ -31,7 +34,8 @@ public:
 
 private:
     static Authenticator* instance; 
-    string loggedInUser = "NO-USER";
+    Student loggedInUser;
+    string loggedIn = "no";
     // Student* user;
 
     // constructor

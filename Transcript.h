@@ -2,9 +2,7 @@
 #include <string>
 #include <vector>
 #include "Course.h"
-#include "Student.h"
-#include "CourseList.h"
-#include "ModuleList.h"
+//#include "Student.h"
 using namespace std;
 
 #ifndef TRANSCRIPT_H
@@ -12,7 +10,6 @@ using namespace std;
 
 #pragma once
 
-// TO DO: -add functionality so a course can be taken multiple times. -maybe add an attribute linking back to the student?
 
 class Transcript
 {
@@ -37,10 +34,12 @@ public:
     // getter for size
     int getSize();
 
+    void notifyObservers();
+
     ~Transcript();
 
 private:
-    CourseList completed;
+    vector<Course> completed;
     vector<int> grades;
     int size;
     // later - maybe add a year/date attribute to track when a course was taken?
