@@ -1,14 +1,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Course.h"
-#include "CourseList.h"
+//#include "Course.h"
+//#include "CourseList.h"
 using namespace std;
 
 #ifndef MODULE_H
 #define MODULE_H
 
 #pragma once
+
+class Course;
+class CourseList;
 
 class Module
 {

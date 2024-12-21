@@ -28,7 +28,6 @@ RequirementDashboard::RequirementDashboard()
 
 void RequirementDashboard::printRequirements(Student u)
 {
-    // QT here QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
     printf("Requirement Dashboard:\n");
 
     Transcript transcript = u.getTranscript();

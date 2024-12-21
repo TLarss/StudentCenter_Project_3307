@@ -1,11 +1,72 @@
 #include <iostream>
 #include <string>
+#include <vector>
+
+#ifndef COURSE_H
+#define COURSE_H
+
+#pragma once
+
+// Forward declaration of CourseList
+class CourseList;
+
+class Course {
+public:
+    Course();
+    Course(std::string f, int i);
+
+    std::string getFaculty();
+    void setFaculty(std::string f);
+
+    int getCourseID();
+    void setCourseID(int i);
+
+    std::string getTitle();
+    void setTitle(std::string t);
+
+    char getType();
+    void setType(char t);
+
+    float getNumCredits();
+    void setNumCredits(float n);
+
+    const std::vector<Course> getPrereqs() const;
+    int addPrereq(Course p);
+    int removePrereq(Course p);
+
+    std::string getCourseName();
+
+    void setBreadth(char b);
+    char getBreadth();
+
+    ~Course();
+
+private:
+    std::string faculty;
+    int courseID;
+    std::string title;
+    char type;
+    float numCredits;
+    CourseList* prereqs; // Use pointer instead of full definition
+    char breadth;
+    int size;
+};
+
+#endif
+
+
+/*#include <iostream>
+#include <string>
+//#include "CourseList.h"
 using namespace std;
 
 #ifndef COURSE_H
 #define COURSE_H
 
 #pragma once
+
+// Forward declaration of CourseList
+class CourseList;
 
 
 class Course
@@ -86,4 +147,4 @@ private:
     // later - add prereq count attribute !!
 };
 
-#endif
+#endif*/

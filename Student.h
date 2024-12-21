@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-/*#include "Person.h"
+#include "Person.h"
 #include "Course.h"
 #include "Module.h"
 #include "Transcript.h"
@@ -9,7 +9,7 @@
 #include "CourseNavigator.h"
 #include "ProgressBar.h"
 #include "CourseList.h"
-#include "ModuleList.h"*/
+#include "ModuleList.h"
 
 using namespace std;
 

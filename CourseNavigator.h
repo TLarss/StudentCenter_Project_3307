@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Observer.h"
+#include "Student.h"
 using namespace std;
 
 #ifndef COURSENAVIGATOR_H
@@ -16,7 +17,7 @@ public:
 
     void printCompletedCourses(Student u);
 
-    void printCurrentCourses(Student u);
+    //void printCurrentCourses(Student u);
 
     void printUpcomingCourses(Student u);
 

@@ -2,6 +2,7 @@
 #include "Transcript.h"
 #include "Course.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 CourseNavigator::CourseNavigator()
@@ -12,17 +13,29 @@ CourseNavigator::CourseNavigator()
 void CourseNavigator::printCompletedCourses(Student u)
 {
     Transcript transcript = u.getTranscript();
-    vector<Course> completedCorses = transcript.getCompleted();
+    vector<Course> completedCourses = transcript.getCompleted();
 
-    // display array values to app screen !!!
+    printf("\n--------------------------------------------------\n");
+
+    if (completedCourses.size() == 0) printf("Completed Courses: none\n")
+
+    else {
+        printf("Completed Courses:\n")
+        for (int i = 0; i < completedCourses.size(); i++) {
+            printf("%s, ", completedCourses[i].getCourseName());
+            i++;
+            if (i < completedCourses.size()) printf("%s, ", completedCourses[i].getCourseName());
+            printf("\n");
+        }
+    }
 }
 
-void CourseNavigator::printCurrentCourses(Student u)
+/*void CourseNavigator::printCurrentCourses(Student u)
 {
     vector<Course> currentCourses = u.getClasses();
 
     // display array values to app screen !!!
-}
+}*/
 
 
 // I'm somewhat using Facade Pattern here right?
@@ -52,9 +65,13 @@ void CourseNavigator::printUpcomingCourses(Student u)
 
 void CourseNavigator::update(Student u)
 {
+    printf("\n--------------------------------------------------\n");
+    printf("                ~COURSE NAVIGATOR~                  \n");
+
     printCompletedCourses(u);
-    printCurrentCourses(u);
     printUpcomingCourses(u);
+
+    printf("\n--------------------------------------------------\n");
 }
 
 CourseNavigator::~CourseNavigator()
