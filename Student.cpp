@@ -296,23 +296,23 @@ int Student::removeClass(Course c)
     return 0;*/
 }
 
-/*// getter for requirementDashboard
-RequirementDashboard getRequirementDashboard()
+// getter for requirementDashboard
+RequirementDashboard* Student::getRequirementDashboard()
 {
     return requirementDashboard;
 }
 
 // getter for course navigator
-CourseNavigator getCourseNavigator()
+CourseNavigator* Student::getCourseNavigator()
 {
     return courseNavigator;
 }
 
 // getter for progressBar
-ProgressBar getProgressBar()
+ProgressBar* Student::getProgressBar()
 {
-    return progressBar
-}*/
+    return progressBar;
+}
 
 // destructor
 Student::~Student()

@@ -64,13 +64,13 @@ public:
     int removeClass(Course c);
 
     // getter for requirementDashboard
-    RequirementDashboard getRequirementDashboard();
+    RequirementDashboard* getRequirementDashboard();
 
     // getter for course navigator
-    CourseNavigator getCourseNavigator();
+    CourseNavigator* getCourseNavigator();
 
     // getter for progressBar
-    ProgressBar getProgressBar();
+    ProgressBar* getProgressBar();
 
     // destructor
     ~Student();
@@ -78,11 +78,9 @@ public:
 private:
     int gradYear;
     vector<Module> modules;
-    //ModuleList modules;
     string academicStatus;
     Transcript transcript;
     vector<Course> classes;
-    //CourseList classes;
     int size;
     RequirementDashboard *requirementDashboard;
     CourseNavigator *courseNavigator;

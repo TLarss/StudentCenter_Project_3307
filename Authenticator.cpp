@@ -22,7 +22,7 @@ Student* Authenticator::getUser()
 }
 
 // logs in user and opens main screen
-int Authenticator::login(const string& username, const string& password)
+int Authenticator::loginAttempt(const string& username, const string& password)
 {
     // ADD IN CALL TO DATABASE LATER!!!!!!!!
 
@@ -34,12 +34,13 @@ int Authenticator::login(const string& username, const string& password)
     }
 
     else if (username != "tlarson3") {
-        // implement !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        loggedIn = "yes";
+        return 1;
     }
 
     else {
         printf("incorrect password, please try again.\n");
-        return 1;
+        return 2;
     }
 }
 
@@ -47,8 +48,73 @@ int Authenticator::login(const string& username, const string& password)
 void Authenticator::logout()
 {
     loggedIn = "no";
-    // set logged in user to no one!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    delete &loggedInUser;
+    //loggedInUser = nullptr;
 }
+
+Student* Authenticator::printLogin()
+{
+    printf("\n---------------------------------------------------------\n");
+    printf("\n------------------------~LOGIN~--------------------------\n");
+
+    string username;
+    string password;
+
+    cout << "Enter username: ";
+    getline(cin, username);
+
+    cout << "Enter password: ";
+    getline(cin, password);
+
+    printf("~\n");
+    printf("~\n");
+    printf("~\n");
+
+    int l = loginAttempt(username, password);
+
+    if (l == 0) {
+        cout << "Login success!" << endl;
+    } 
+    
+    else if (l == 1) {
+        cout << "Welcome! Please sign up" << endl;
+
+        int id;
+        std::string name;
+        int graduationYear;
+
+        // Ask the user for student ID
+        std::cout << "Enter Student ID: ";
+        std::cin >> id;
+
+        // Clear the input buffer to avoid issues with getline
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        // Ask the user for name
+        std::cout << "Enter Name: ";
+        std::getline(std::cin, name);
+
+        // Ask the user for expected graduation year
+        std::cout << "Enter Expected Graduation Year: ";
+        std::cin >> graduationYear;
+
+        // Create a new Student object
+        Student *loggedInUser = new Student(id, name, graduationYear);
+    }
+
+    else {
+        cout << "Invalid username or password. please try again." << endl;
+        printLogin();
+    }
+
+    printf("~\n");
+    printf("~\n");
+    printf("~\n");
+
+    return &loggedInUser;
+}
+
+
 
 // destructor
 Authenticator::~Authenticator()

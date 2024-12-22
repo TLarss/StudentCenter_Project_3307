@@ -22,7 +22,8 @@ RequirementDashboard::RequirementDashboard()
 
 void RequirementDashboard::printRequirements(Student* u)
 {
-    printf("Requirement Dashboard:\n");
+    printf("\n--------------------------------------------------\n");
+    printf("\n-------------~REQUIREMENT DASHBOARD~--------------\n");
 
     Transcript transcript = u->getTranscript();
     vector<Course> courses = transcript.getCompleted();
@@ -106,6 +107,9 @@ void RequirementDashboard::printRequirements(Student* u)
 
     // report for if all module courses have been fulfilled
     // HOW TO DO THIS ???????????????? do i really need this part ?????????????????????
+
+
+    printf("\n--------------------------------------------------\n");
 }
 
 void RequirementDashboard::setRequirements(string doc)

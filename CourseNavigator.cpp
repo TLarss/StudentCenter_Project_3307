@@ -11,7 +11,6 @@ void CourseNavigator::printCompletedCourses(Student* u)
     Transcript transcript = u->getTranscript();
     vector<Course> completedCourses = transcript.getCompleted();
 
-    printf("\n--------------------------------------------------\n");
 
     if (completedCourses.size() == 0) printf("Completed Courses: none\n");
 
@@ -23,6 +22,8 @@ void CourseNavigator::printCompletedCourses(Student* u)
             if (i < completedCourses.size()) printf("%s, ", completedCourses[i].getCourseName());
             printf("\n");
         }
+
+        printf("\n");
     }
 }
 
@@ -46,17 +47,25 @@ void CourseNavigator::printUpcomingCourses(Student* u)
     // only for the 1st module for now, implement others later !!!!!
     Module m1 = modules[0];
     const vector<Course> m1Courses = m1.getClassList();
+    vector<Course> remaining;
 
-    // display array values to app screen !!!
-
-
-    /*for (int i = 0; i < m1.getSize(); i++) {
-        Course c = m1Courses[i];
-
-        for (int j = 0; j < completedCourses.Length(); j ++) {
-            if 
+    for (int i = 0; i < m1Courses.size(); i++) {
+        int flag = 0;
+        for (int j = 0; j < completedCourses.size(); j++) {
+            if (m1Courses[i].getCourseName() == completedCourses[j].getCourseName()) flag = 1;
         }
-    } */
+
+        if (flag != 1) remaining.push_back(m1Courses[i]);
+    }
+
+    printf("Remaining Courses:\n");
+    for (int i = 0; i < remaining.size(); i++) {
+        printf("%s, ", remaining[i].getCourseName());
+        i++;
+        if (i < remaining.size()) printf("%s, ", remaining[i].getCourseName());
+        printf("\n");
+    }
+    printf("\n");
 }
 
 void CourseNavigator::update(Student* u)

@@ -30,7 +30,9 @@ public:
     Student* getUser();
 
     // logs in user and opens main screen
-    int login(const string& username, const string& password);
+    int loginAttempt(const string& username, const string& password);
+
+    Student* printLogin();
 
     // logs out user and opens login screen
     void logout();
@@ -41,6 +43,7 @@ public:
 private:
     static Authenticator* instance; 
     Student loggedInUser;
+    Student savedStudent;
     string loggedIn = "no";
     // Student* user;
 
@@ -50,5 +53,6 @@ private:
     // destructor
     ~Authenticator();
 };
+
 
 #endif

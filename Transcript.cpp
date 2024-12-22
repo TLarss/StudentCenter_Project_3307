@@ -20,7 +20,6 @@ int Transcript::addCompleted(Course c, int g)
     // check if the course is already in the list
     for (int i = 0; i < completed.size(); i++) {
         if (completed[i].getCourseName() == c.getCourseName()) {
-            printf("course is already in list\n");
             return 1;
         }
     }
@@ -198,13 +197,13 @@ void Transcript::notifyObservers()
     Authenticator* a = Authenticator::getInstance();
     Student *s = a->getUser();
 
-    CourseNavigator cn = s->getCourseNavigator();
-    ProgressBar pb = s->getProgressBar();
-    RequirementDashboard rd = s->getRequirementDashboard();
+    CourseNavigator *cn = s->getCourseNavigator();
+    ProgressBar *pb = s->getProgressBar();
+    RequirementDashboard *rd = s->getRequirementDashboard();
 
-    cn.update(s);
-    pb.update(s);
-    rd.update(s);
+    cn->update(s);
+    pb->update(s);
+    rd->update(s);
 }
 
 // destrutor 

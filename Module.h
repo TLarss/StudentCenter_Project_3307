@@ -33,10 +33,10 @@ public:
     vector<Course> getClassList() const;
 
     // method to add a class to the class list
-    int addClass(Course c); 
+    int addClass(Course* c); 
 
     // method to remove a class from the class list
-    int removeClass(Course c); 
+    int removeClass(Course* c); 
 
     // getter for num credits
     float getNumcredits(); // maybe implement num credits as a variable that is set by itself by adding up the credits !!

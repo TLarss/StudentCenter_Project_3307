@@ -34,7 +34,7 @@ public:
     // getter for size
     int getSize();
 
-    void notifyObservers();
+    
 
     ~Transcript();
 
@@ -42,6 +42,7 @@ protected:
     vector<Course> completed;
     vector<int> grades;
     int size;
+    void notifyObservers();
 };
 
 #endif
