@@ -19,17 +19,23 @@ using namespace std;
 class Authenticator
 {
 public:
+    // Delete copy constructor and assignment operator to prevent cloning
+    Authenticator(const Authenticator&) = delete;
+    Authenticator& operator=(const Authenticator&) = delete;
+
     // returns the instance of Authenticator, if it's not initialized, it creates the instance then returns it
     static Authenticator* getInstance();
 
     // returns student object that is logged in
-    Student getUser();
+    Student* getUser();
 
     // logs in user and opens main screen
     int login(const string& username, const string& password);
 
     // logs out user and opens login screen
     void logout();
+
+    
 
 
 private:

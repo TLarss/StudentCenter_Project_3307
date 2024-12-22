@@ -1,4 +1,3 @@
-#include "Student.h"
 #include "Observer.h"
 #include <iostream>
 #include <string>
@@ -11,7 +10,7 @@ using namespace std;
 #pragma once
 
 
-// implement later for deliverable 3 !!!
+class Student;
 
 
 class RequirementDashboard : public Observer
@@ -21,11 +20,11 @@ public:
 
     //RequirementDashboard(string doc);
 
-    void printRequirements(Student u);
+    void printRequirements(Student* u);
 
     void setRequirements(string doc);
 
-    void update(Student u);
+    void update(Student* u);
 
     ~RequirementDashboard();
 

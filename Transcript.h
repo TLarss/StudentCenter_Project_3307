@@ -38,13 +38,10 @@ public:
 
     ~Transcript();
 
-private:
+protected:
     vector<Course> completed;
     vector<int> grades;
     int size;
-    // later - maybe add a year/date attribute to track when a course was taken?
-
-    void notifyObservers();
 };
 
 #endif

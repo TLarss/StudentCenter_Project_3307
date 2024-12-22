@@ -6,9 +6,9 @@ CourseNavigator::CourseNavigator()
 
 }
 
-void CourseNavigator::printCompletedCourses(Student u)
+void CourseNavigator::printCompletedCourses(Student* u)
 {
-    Transcript transcript = u.getTranscript();
+    Transcript transcript = u->getTranscript();
     vector<Course> completedCourses = transcript.getCompleted();
 
     printf("\n--------------------------------------------------\n");
@@ -36,12 +36,12 @@ void CourseNavigator::printCompletedCourses(Student u)
 
 // I'm somewhat using Facade Pattern here right?
 
-void CourseNavigator::printUpcomingCourses(Student u)
+void CourseNavigator::printUpcomingCourses(Student* u)
 {
-    vector<Module> modules = u.getModules();
-    Transcript transcript = u.getTranscript();
+    vector<Module> modules = u->getModules();
+    Transcript transcript = u->getTranscript();
     const vector<Course> completedCourses = transcript.getCompleted();
-    vector<Course> currentCourses = u.getClasses();
+    vector<Course> currentCourses = u->getClasses();
 
     // only for the 1st module for now, implement others later !!!!!
     Module m1 = modules[0];
@@ -59,7 +59,7 @@ void CourseNavigator::printUpcomingCourses(Student u)
     } */
 }
 
-void CourseNavigator::update(Student u)
+void CourseNavigator::update(Student* u)
 {
     printf("\n--------------------------------------------------\n");
     printf("                ~COURSE NAVIGATOR~                  \n");

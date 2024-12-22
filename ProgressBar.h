@@ -14,9 +14,9 @@ class ProgressBar : public Observer
 public:
     ProgressBar();
 
-    void printProgressBar(Student u);
+    void printProgressBar(Student* u);
 
-    void update(Student u);
+    void update(Student* u);
 
     ~ProgressBar();
 

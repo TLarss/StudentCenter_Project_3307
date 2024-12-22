@@ -3,6 +3,7 @@
 #include "RequirementDashboard.h"
 #include "ProgressBar.h"
 #include "CourseNavigator.h"
+#include "Authenticator.h"
 using namespace std;
 
 Transcript::Transcript() : size(0) {}
@@ -193,12 +194,13 @@ int Transcript::getSize()
 // 
 void Transcript::notifyObservers()
 {
-    Authenticator* a = Authenticator.getInstance();
-    Student s = a.getUser();
+    //Authenticator* a = Authenticator.getInstance();
+    Authenticator* a = Authenticator::getInstance();
+    Student *s = a->getUser();
 
-    CourseNavigator cn = s.getCourseNavigator();
-    ProgressBar pb = s.getProgressBar();
-    RequirementDashboard rd = s.getRequirementDashboard();
+    CourseNavigator cn = s->getCourseNavigator();
+    ProgressBar pb = s->getProgressBar();
+    RequirementDashboard rd = s->getRequirementDashboard();
 
     cn.update(s);
     pb.update(s);

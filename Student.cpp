@@ -1,4 +1,7 @@
 #include "Student.h"
+#include "RequirementDashboard.h"
+#include "CourseNavigator.h"
+#include "ProgressBar.h"
 using namespace std;
 
 
@@ -10,9 +13,9 @@ Student::Student()
     ID = 0;
     name = "student name";
 
-    requirementDashboard = new RequirementDashboard();
-    courseNavigator = new CourseNavigator();
-    progressBar = new ProgressBar();
+    RequirementDashboard *requirementDashboard = new RequirementDashboard();
+    CourseNavigator *courseNavigator = new CourseNavigator();
+    ProgressBar *progressBar = new ProgressBar();
 }
 
 
@@ -25,9 +28,9 @@ Student::Student(int i, string n, int g)
     name = n;
     gradYear = g;
 
-    requirementDashboard = new RequirementDashboard();
-    courseNavigator = new CourseNavigator();
-    progressBar = new ProgressBar();
+    RequirementDashboard *requirementDashboard = new RequirementDashboard();
+    CourseNavigator *courseNavigator = new CourseNavigator();
+    ProgressBar *progressBar = new ProgressBar();
 }
 
 // constructor 3, initializes ID, name, grade year, classes, modules, and also email
@@ -40,9 +43,9 @@ Student::Student(int i, string n, int g, string e)
     gradYear = g;
     email = e;
 
-    requirementDashboard = new RequirementDashboard();
-    courseNavigator = new CourseNavigator();
-    progressBar = new ProgressBar();
+    RequirementDashboard *requirementDashboard = new RequirementDashboard();
+    CourseNavigator *courseNavigator = new CourseNavigator();
+    ProgressBar *progressBar = new ProgressBar();
 }
 
 // getter for grad year
@@ -87,7 +90,7 @@ int Student::addModule(Module m)
     }
 
     // add module to list
-    list.push_back(m);
+    modules.push_back(m);
     return 0;
 
 

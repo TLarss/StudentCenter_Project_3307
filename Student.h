@@ -5,15 +5,18 @@
 #include "Course.h"
 #include "Module.h"
 #include "Transcript.h"
-#include "RequirementDashboard.h"
-#include "CourseNavigator.h"
-#include "ProgressBar.h"
 using namespace std;
 
 #ifndef STUDENT_H
 #define STUDENT_H
 
 #pragma once
+
+
+class RequirementDashboard;
+class CourseNavigator;
+class ProgressBar;
+
 
 class Student : public Person
 {
@@ -81,9 +84,9 @@ private:
     vector<Course> classes;
     //CourseList classes;
     int size;
-    RequirementDashboard requirementDashboard;
-    CourseNavigator courseNavigator;
-    ProgressBar progressBar;
+    RequirementDashboard *requirementDashboard;
+    CourseNavigator *courseNavigator;
+    ProgressBar *progressBar;
     // add more later !!
 };
 

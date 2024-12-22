@@ -1,4 +1,5 @@
 #include "RequirementDashboard.h"
+#include "Student.h"
 using namespace std;
 
 
@@ -19,11 +20,11 @@ RequirementDashboard::RequirementDashboard()
     maxFaculty = 14.0;
 }
 
-void RequirementDashboard::printRequirements(Student u)
+void RequirementDashboard::printRequirements(Student* u)
 {
     printf("Requirement Dashboard:\n");
 
-    Transcript transcript = u.getTranscript();
+    Transcript transcript = u->getTranscript();
     vector<Course> courses = transcript.getCompleted();
     vector<int> grades = transcript.getGrades();
     int size = courses.size();
@@ -112,7 +113,7 @@ void RequirementDashboard::setRequirements(string doc)
     // this method would take info from an API from western (should I grow the app)
 }
 
-void RequirementDashboard::update(Student u)
+void RequirementDashboard::update(Student* u)
 {
     printRequirements(u); // not sure this is right ????
 }
