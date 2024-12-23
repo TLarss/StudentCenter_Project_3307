@@ -40,19 +40,20 @@ void Facade::mainScreen(Student *s)
         string userInput;
 
         printf("Navigation options (type the character then press enter): Logout - 'L', Add Class Grade - 'A', Exit - 'E'\n");
-        std::cin >> userInput;
+        //std::cin >> userInput;
+        std::getline(std::cin, userInput);
 
         // Convert to uppercase to handle lowercase input
-        userInput = std::toupper(userInput);
+        //userInput = std::toupper(userInput);
 
         // Process input
-        if (userInput == 'L') {
+        if (userInput == "L") {
             auth->logout();
         } 
-        else if (userInput == 'A') {
+        else if (userInput == "A") {
             editCoursesScreen(s); 
         } 
-        else if (userInput == 'E') {
+        else if (userInput == "E") {
             exit(0);
         } 
         else {
@@ -86,18 +87,18 @@ void Facade::editCoursesScreen(Student *s)
         std::cin >> userInput;
 
         // Convert to uppercase to handle lowercase input
-        string userUpper = std::toupper(userInput);
-        if (userUpper == 'M') {
+        //string userUpper = std::toupper(userInput);
+        if (userInput == "M") {
             flag = 1;
             break;
         }
 
         // Convert to uppercase to handle lowercase input
-        userInput = std::tolower(userInput);
+        //userInput = std::tolower(userInput);
 
         int found = -1;
-        for (int i = 0; i < modCourses.sizez(); i++) {
-            if (userInput == modCourses[i].getClassName()) found = i;
+        for (int i = 0; i < modCourses.size(); i++) {
+            if (userInput == modCourses[i].getCourseName()) found = i;
         }
 
         if (found == -1) {
@@ -118,7 +119,7 @@ void Facade::editCoursesScreen(Student *s)
             if (number >= 0 && number <= 100) {
                 
                 if (tr->addCompleted(modCourses[found], number) == 1) {
-                    tr->removeCompleted(modCourses[found], number);
+                    tr->removeCompleted(modCourses[found]);
                     tr->addCompleted(modCourses[found], number);
                     flag = 1;
                     break;
@@ -126,7 +127,7 @@ void Facade::editCoursesScreen(Student *s)
 
             } 
             else {
-                flag = 1
+                flag = 1;
                 break;
             }
         }

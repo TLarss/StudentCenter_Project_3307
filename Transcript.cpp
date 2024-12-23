@@ -1,9 +1,10 @@
 #include "Transcript.h"
-#include "Student.h"
-#include "RequirementDashboard.h"
-#include "ProgressBar.h"
-#include "CourseNavigator.h"
-#include "Authenticator.h"
+#include "Student.cpp"
+#include "RequirementDashboard.h" // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//#include "RequirementDashboard.cpp"
+#include "ProgressBar.cpp"
+#include "CourseNavigator.cpp"
+#include "Authenticator.cpp"
 using namespace std;
 
 Transcript::Transcript() : size(0) {}

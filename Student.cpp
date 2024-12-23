@@ -1,7 +1,7 @@
 #include "Student.h"
-#include "RequirementDashboard.h"
-#include "CourseNavigator.h"
-#include "ProgressBar.h"
+#include "RequirementDashboard.cpp"
+#include "CourseNavigator.cpp"
+#include "ProgressBar.cpp"
 using namespace std;
 
 
@@ -13,6 +13,7 @@ Student::Student()
     ID = 0;
     name = "student name";
 
+    Transcript *transcript = new Transcript();
     RequirementDashboard *requirementDashboard = new RequirementDashboard();
     CourseNavigator *courseNavigator = new CourseNavigator();
     ProgressBar *progressBar = new ProgressBar();
@@ -28,6 +29,7 @@ Student::Student(int i, string n, int g)
     name = n;
     gradYear = g;
 
+    Transcript *transcript = new Transcript();
     RequirementDashboard *requirementDashboard = new RequirementDashboard();
     CourseNavigator *courseNavigator = new CourseNavigator();
     ProgressBar *progressBar = new ProgressBar();
@@ -43,6 +45,7 @@ Student::Student(int i, string n, int g, string e)
     gradYear = g;
     email = e;
 
+    Transcript *transcript = new Transcript();
     RequirementDashboard *requirementDashboard = new RequirementDashboard();
     CourseNavigator *courseNavigator = new CourseNavigator();
     ProgressBar *progressBar = new ProgressBar();
@@ -181,7 +184,7 @@ int Student::removeModule(Module m)
 }
 
 // getter for transcript
-Transcript Student::getTranscript()
+Transcript* Student::getTranscript()
 {
     return transcript;
 }

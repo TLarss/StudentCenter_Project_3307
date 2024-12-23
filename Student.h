@@ -52,7 +52,7 @@ public:
     int removeModule(Module m);
 
     // getter for transcript
-    Transcript getTranscript();
+    Transcript* getTranscript();
 
     // getter for classes
     const vector<Course> getClasses() const; 
@@ -79,7 +79,7 @@ private:
     int gradYear;
     vector<Module> modules;
     string academicStatus;
-    Transcript transcript;
+    Transcript *transcript;
     vector<Course> classes;
     int size;
     RequirementDashboard *requirementDashboard;

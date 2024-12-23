@@ -1,10 +1,8 @@
 //#include "Person.h"
-#include "Student.h"
+#include "Student.cpp"
 #include <iostream>
 #include <string>
-//#include "all_headers.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
 #ifndef AUTHENTICATOR_H
@@ -18,6 +16,19 @@ using namespace std;
 
 class Authenticator
 {
+private:
+    static Authenticator* instance; 
+    Student *loggedInUser;
+    Student *savedStudent;
+    string loggedIn;
+    // Student* user;
+
+    // constructor
+    Authenticator() : loggedIn("no") {} // COME BACK!!!!!!!!!!!!!!!!!!!!!!!!
+
+    // destructor
+    ~Authenticator();
+
 public:
     // Delete copy constructor and assignment operator to prevent cloning
     Authenticator(const Authenticator&) = delete;
@@ -34,25 +45,19 @@ public:
 
     Student* printLogin();
 
+    // constructor
+    //Authenticator();
+
     // logs out user and opens login screen
     void logout();
 
     
 
 
-private:
-    static Authenticator* instance; 
-    Student loggedInUser;
-    Student savedStudent;
-    string loggedIn = "no";
-    // Student* user;
 
-    // constructor
-    Authenticator();
-
-    // destructor
-    ~Authenticator();
 };
+
+//static Authenticator* instance = nullptr;
 
 
 #endif

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Student.h"
 using namespace std;
 
 #ifndef OBSERVER_H

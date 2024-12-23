@@ -1,21 +1,26 @@
-#include "Student.h"
+//#include "Student.cpp" // probs
 #include "Module.h"
-#include "Course.h"
-#include "Authenticator.h"
-#include "Transcript.h"
-#include "Facade.h"
+#include "Course.cpp"
+//#include "Authenticator.cpp" // probs
+#include "Transcript.cpp" // probs
+//#include "Facade.cpp" // probs
 #include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
 
+class Student;
+
 
 int main() 
 {
-    Authenticator *auth = Authenticator::getInstance();
-    Facade *facade = new Facade(auth);
+    printf("Hello world!\n");
+    Course *testCourse = new Course();
+    //Authenticator* auth = Authenticator::getInstance(); // !!!!!!!!!!!
+    //Facade *facade = new Facade(auth);
+    //Facade *facade = new Facade(Authenticator::getInstance());
 
-    auth->loginAttempt("tlarson3", "abcd");
+    /*auth->loginAttempt("tlarson3", "abcd");
     Student *savedUser = auth->getUser();
 
 
@@ -50,7 +55,7 @@ int main()
 
     // ........
     auth->logout();
-    facade->loginScreen();
+    facade->loginScreen();*/
 
     return 0;
 }

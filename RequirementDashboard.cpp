@@ -1,5 +1,5 @@
 #include "RequirementDashboard.h"
-#include "Student.h"
+//#include "Student.h"
 using namespace std;
 
 
@@ -25,9 +25,9 @@ void RequirementDashboard::printRequirements(Student* u)
     printf("\n--------------------------------------------------\n");
     printf("\n-------------~REQUIREMENT DASHBOARD~--------------\n");
 
-    Transcript transcript = u->getTranscript();
-    vector<Course> courses = transcript.getCompleted();
-    vector<int> grades = transcript.getGrades();
+    Transcript *transcript = u->getTranscript();
+    vector<Course> courses = transcript->getCompleted();
+    vector<int> grades = transcript->getGrades();
     int size = courses.size();
 
     // CHECK REQUIREMENT FULLFILLMENT

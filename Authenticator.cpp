@@ -3,22 +3,30 @@ using namespace std;
 
 // ||| SINGLETON |||
 
+
+
 // constructor
-Authenticator::Authenticator() {}
+//Authenticator::Authenticator() : loggedIn("no") {}
 
 // getter for instance, if the authenticator is not initialized, it creates the instance then returns it
-Authenticator* Authenticator::getInstance() 
+Authenticator* Authenticator::getInstance() // static - removed
 {
     // if the instance hasn't been initialized yet, call the constructor then return the instance
-    if (instance == nullptr) instance = new Authenticator();
+    if (instance == nullptr) {
+        instance = new Authenticator();
+    }
     return instance;
 }
 
 // returns the user that is currently logged in
 Student* Authenticator::getUser()
 {
-    if (loggedIn == "no") perror("Error: No user is currently logged in.");
-    return &loggedInUser;
+    if (loggedIn == "no") 
+    {
+        perror("Error: No user is currently logged in.");
+
+    }
+    return loggedInUser;
 }
 
 // logs in user and opens main screen
@@ -111,7 +119,7 @@ Student* Authenticator::printLogin()
     printf("~\n");
     printf("~\n");
 
-    return &loggedInUser;
+    return loggedInUser;
 }
 
 

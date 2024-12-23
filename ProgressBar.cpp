@@ -1,4 +1,5 @@
 #include "ProgressBar.h"
+//#include "Student.h"
 using namespace std;
 
 ProgressBar::ProgressBar()
@@ -10,13 +11,13 @@ void ProgressBar::printProgressBar(Student* u)
 {
     printf("\n--------------------------------------------------\n\n");
 
-    Transcript t = u->getTranscript();
-    const vector<Course> completed = t.getCompleted();
-    const vector<int> grades = t.getGrades();
+    Transcript *t = u->getTranscript();
+    const vector<Course> completed = t->getCompleted();
+    const vector<int> grades = t->getGrades();
 
     float credits = 0;
 
-    for (int i = 0; i < t.getSize(); i++) {
+    for (int i = 0; i < t->getSize(); i++) {
 
         Course ci = completed[i];
 

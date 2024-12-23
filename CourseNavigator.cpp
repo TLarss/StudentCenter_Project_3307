@@ -8,8 +8,8 @@ CourseNavigator::CourseNavigator()
 
 void CourseNavigator::printCompletedCourses(Student* u)
 {
-    Transcript transcript = u->getTranscript();
-    vector<Course> completedCourses = transcript.getCompleted();
+    Transcript *transcript = u->getTranscript();
+    vector<Course> completedCourses = transcript->getCompleted();
 
 
     if (completedCourses.size() == 0) printf("Completed Courses: none\n");
@@ -40,13 +40,13 @@ void CourseNavigator::printCompletedCourses(Student* u)
 void CourseNavigator::printUpcomingCourses(Student* u)
 {
     vector<Module> modules = u->getModules();
-    Transcript transcript = u->getTranscript();
-    const vector<Course> completedCourses = transcript.getCompleted();
+    Transcript *transcript = u->getTranscript();
+    vector<Course> completedCourses = transcript->getCompleted(); // const removed
     vector<Course> currentCourses = u->getClasses();
 
     // only for the 1st module for now, implement others later !!!!!
     Module m1 = modules[0];
-    const vector<Course> m1Courses = m1.getClassList();
+    vector<Course> m1Courses = m1.getClassList(); // const removed
     vector<Course> remaining;
 
     for (int i = 0; i < m1Courses.size(); i++) {
